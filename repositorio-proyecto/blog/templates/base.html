@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Asociacion juntos en accion</title>
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+</head>
+<body>
+
+    <!--Header - menu-->
+    <header>
+
+       <div class="header-content">
+
+            <img src="/blog/static/img/AsociacionCivilJEA.jpg" alt="" class="logo-menu">
+
+            <div class="logo">
+                <h1>Asociacion <b>JUNTOS EN ACCION</b></h1>
+            </div>
+
+            <input type="checkbox" id="logo-menu">
+            <label for="logo-menu"><img src="{%static 'img/menu.png'%}" alt=""></label>
+            <div class="menu" id="show-menu">
+
+                <nav>
+                    <ul class="list">
+                        <li><a href="{% url 'home' %}">INICIO</a></li>          
+                        <li><a href="{% url 'noticias:listar' %}">NOTICIAS</a></li>
+                        <li><a href="#footer">CONTACTO</a></li>
+                        {% if user.is_authenticated %}
+                        <strong>Hola {{ user.username }}</strong>
+                        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">INGRESAR</a></li>
+                        <li><a href="{% url 'usuarios:registro' %}">REGISTARSE</a></li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+    </header>
+    {% block contenido%}
+
+    {% endblock contenido %}
+   
+
+    <div class="container-footer" id="footer">  
+
+        <footer>
+         <div class="footer-Grande">
+            <div class="footer-Contac">
+                <h2>Contacto</h2>
+                
+                    <p>Email: uep143.sp.chaco@gmail.com</p>
+               
+                    <p>Telefono: 3644733177</p>
+                
+            </div>
+
+            <div class="footer-Mid">
+                <div class="logo-footer">
+                    <img src="{% static 'img/AsociacionCivilJEA.png' %}" alt="">
+                </div>
+            
+
+            <div class="redes-footer">
+                <div><h3>SEGUINOS!</h3></div>
+
+                <div class="redes-logos">
+                <a href="https://www.facebook.com/profile.php?id=100064567493574"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+                <a href="https://www.facebook.com/people/UEP-N%C2%BA-143-CENTRO-DE-FORMACION-INTEGRAL/100063611561590/"><i class="fab fa-google-plus-g icon-redes-footer"></i></a> 
+                </div>
+              
+                
+            </div>
+            </div>
+
+            <div class="footer-direccion">
+                <h2>Direccion:</h2>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1497.5047048757444!2d-60.4472419318075!3d-26.786261423383593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94412ce3c68bc62f%3A0x8c842a33abd51d5a!2sDorrego%20490%2C%20H3700IAJ%20S%C3%A1enz%20Pe%C3%B1a%2C%20Chaco!5e0!3m2!1ses!2sar!4v1670713424075!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+
+
+            <hr>
+            
+
+        </footer>
+
+    </div>
+
+</div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

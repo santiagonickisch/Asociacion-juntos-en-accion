@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}HOME{% endblock titulo%}
+
+{% block contenido %}
+ <!--Portada-->
+
+ <div class="container-all" id="move-content">
+
+    
+    <div class="container-cover">
+        <div class="container-info-cover">
+            <h1>¡Todo es posible!</h1>
+            <h2>La inclusion laboral, un compromiso de todos.</h2>
+        </div>
+    </div>
+
+    <div class="container-content">
+        <article>
+
+            <h1>Quienes somos</h1>
+
+            <p>JUNTOS EN ACCION  es una Asociación Civil sin fines de lucro formada    por ciudadanos al servicio de las personas con discapacidad
+                Nuestros principales objetivos son:</p>
+
+                <p> a) Apoyar, contener y asesorar, propiciando el involucramiento de las familias y la sensibilización de la comunidad.
+                </p>
+
+               <p> b) Crear espacios priorizando actividades dentro de la recreación y capacitación laboral.
+               </p>
+
+                <p>
+                c) Resaltar la  importancia de la inclusión social y laboral de las personas con discapacidad, para su realización personal. 
+                </p>
+                <p>
+                d) Insertar al joven con discapacidad en el mundo laboral. 
+                </p>
+                <p>
+                La institución está dirigida y administrada por una Comisión Directiva compuesta de un presidente, un secretario, un tesorero, un vocal titular y un vocal suplente y también una comisión Revisora de Cuentas compuesta por un miembro Titular y uno Suplente.
+                </p>
+
+                <h1>Nuestros objetivos</h1>
+                <figure class="img-obj">
+                <img src="{% static 'img/foto1.jpg' %}" alt="El equipo de Juntos en Accion">
+                <figcaption>-El equipo de JUNTOS EN ACCION</figcaption>
+                </figure>
+
+
+                <p></p>
+                    <h3>Objetivos:</h3>
+                <p>- Incentivar el desarrollo integral de las capacidades de las personas con discapacidad.</p>
+                <p>- Brindar asistencia integral a las familias de las personas con discapacidad.</p>
+                <p>- Promover la articulación inter institucional y el trabajo mancomunado entre Institución, famipa, comunidad.</p>
+                <p>- Generar espacios de concientización en relación a la importancia de la inclusión laboral de las personas con discapacidad.</p>
+                <p>- Propiciar espacios de práctica laboral, tanto en ámbitos públicos o privados.</p>
+                
+
+        </article>
+
+        <div class="container-aside">   
+
+            <h2>Noticias</h2>
+
+            <aside>
+                <div class="aside-post">
+                    {% for noti in notiFecha %}
+                        
+                        <a href="{% url 'noticias:detalle' noti.pk %}"><img src="{{noti.imagen.url}}"></a>
+                        
+                        
+                        <a href="{% url 'noticias:detalle' noti.pk %}"><h3>{{noti.titulo}}</h3></a>
+
+                    {% endfor %}
+                </div>
+
+            </aside>
+        </div>
+    </div>
+{% endblock contenido %}

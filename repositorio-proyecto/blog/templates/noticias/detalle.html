@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}listar{% endblock titulo%}
+
+{% block contenido %}
+    <div class="detalle">    
+		<div class="post-detalle">
+			<div class="tit-img-detalle">
+
+				<h1>{{noticia.titulo}}</h1>
+
+				<img src="{{noticia.imagen.url}}" width= 80% class="categoria-prim-p">
+				
+				<p>{{noticia.cuerpo}}</p>
+
+			</div>
+			<a href="{% url 'noticias:listar' %}">VOLVER</a>
+		</div>
+			
+			<div class="form-detalle">
+				<form method="POST" action="{% url 'noticias:comentar' %}">{% csrf_token %}
+					<textarea name="comentario" maxlength="1500"> </textarea>
+					<input type="text" name="id_noticia" value="{{noticia.pk}}" hidden=""> 
+					<input type="submit" value="COMENTAR">
+				</form>
+			</div>
+			
+			<div class="caja-com-detalle">
+				<h3>COMENTARIOS</h3>
+				
+					{% for com in comentarios %}
+				<div class="com-indi">	
+
+					<div class="com-indi-info">
+						
+						FECHA:{{com.fecha}}<br>
+						USUARIO:{{com.usuario}}<br>
+						
+						{% if user == com.usuario %}
+							<a href="{% url 'noticias:borrar' com.id %}">borrar</a>
+						{% endif %}
+
+					</div>
+
+					<div class="com-indi-txt">
+
+						<p>{{com.texto}}</p>
+						
+					</div>
+
+				</div>
+					{% endfor %}
+				
+			</div>
+	</div>
+{% endblock contenido %}
+
+	
